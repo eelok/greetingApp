@@ -27,7 +27,7 @@ jobs:
 
       - name: Docker build image
         run: |
-          docker build . --file Dockerfile --tage greetint-app${date +%s}
+          docker build . --file Dockerfile --tag greetint-app${date +%s}
 
       - name: Push image to Amazon ECR
         run: |
