@@ -31,4 +31,4 @@ jobs:
 
       - name: Push image to Amazon ECR
         run: |
-          docker push 947204803967.dkr.ecr.eu-central-1.amazonaws.com/greeting-app
+          docker push 947204803967.dkr.ecr.eu-central-1.amazonaws.com/greeting-app:latest
