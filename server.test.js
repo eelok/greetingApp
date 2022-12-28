@@ -1,10 +1,17 @@
+'use strict';
+const request = require('supertest');
+
+const app = require('./app');
+
+
 describe('server', () => {
-    it('should return 200', () => {
-        return request(server)
-        .get('/hello')
-        .then(res => {
-            expect(res.status).toBe(200);
-            expect(res.body).toEqual("");
-        });
+    test('should test / and returng Greeting Everybody!', (done) => {
+        const req = request(app)
+            .get('/')
+            .expect(200)
+            .then(res => {
+                expect(res.text).toEqual("Greeting Everybody!");
+                done();
+            });        
     });
 });
