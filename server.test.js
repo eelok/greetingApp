@@ -10,7 +10,7 @@ describe('server', () => {
             .get('/')
             .expect(200)
             .then(res => {
-                expect(res.text).toEqual("Greeting Everybody");
+                expect(res.text).toEqual("Greeting Everybody!");
                 done();
             });        
     });
