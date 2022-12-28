@@ -1,7 +1,7 @@
 name: Deploy to ECR
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
@@ -36,18 +36,18 @@ jobs:
       - name: Deploy to ECS
         run: |
           aws ecs run-task \
-          --region eu-central-1 \
-          --cluster ecs-course-fargate \
-          --task-definition greeting-app \
-          --count 1 \
-          --launch-type FARGATE \
-          --network-configuration "awsvpcConfiguration={subnets=[subnet-0c75891e3879cc667,subnet-0af6867f3f356aeaf],securityGroups=[sg-0479d7ecdb00a85c3]}" \
+            --region eu-central-1 \
+            --cluster ecs-course-fargate \
+            --task-definition greeting-app \
+            --count 1 \
+            --launch-type FARGATE \
+            --network-configuration "awsvpcConfiguration={subnets=[subnet-0c75891e3879cc667,subnet-0af6867f3f356aeaf],securityGroups=[sg-0479d7ecdb00a85c3]}" \
           | cat
           aws ecs update-service \
-          --region eu-central-1 \
-          --cluster ecs-course-fargate \
-          --service "greeting-app" \
-          --force-new-deployment
+            --region eu-central-1 \
+            --cluster ecs-course-fargate \
+            --service "greeting-app" \
+            --force-new-deployment
           
 
 
